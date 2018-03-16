@@ -1,0 +1,274 @@
+<html>
+{% load staticfiles %}
+<head>
+    <link href='{% static 'styles.css' %}' rel="stylesheet">
+    <title> Report Card </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+</head>
+<body>
+<button id="cmd">Generate PDF</button>
+{% for i in lst %}
+<div id="y">
+<div id="x{{i.0}}" style="border: 5px solid black;">
+<p class="double"><img src='{% static '1.jpg' %}' alt='logo' style="float: left; width: 105px;height: 105px;"> <b>LITTLE FLOWERS PUBLIC SCHOOL</b><br/><br/>
+<b>(An English medium School Recognised by Delhi Admn. Affiliated to C.B.S.E) <br/>
+    Vijay Park (Near C-11), Yamuna Vihar, Delhi-110053, Ph. : 22919858, 22919242 <br/>Website:http://lfpsyv.in,  Email : yvlfps@gmail.com</b></p>
+
+<p style="border:2px solid black;border-right:none;border-left:none;"><b>TERM 2 PROGRESS REPORT - SESSION 2017-18</b></p>
+  <table style="border:3px solid white;text-align:left;font-size:18px;">
+  <tr>
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Student's Name&emsp;: &emsp;{{i.1.name}}<b></td>
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Adm No. &emsp;&emsp;&emsp;: &emsp;{{i.1.admno}}</b></td>
+  <td style="text-align:left;font-size:18px;"><b>&emsp;Class &emsp;&emsp;&emsp;&emsp; : &emsp;{{i.1.cld}}</b></td>
+  </tr>
+  <tr style="border:3px solid white;">
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Father's Name&emsp;&nbsp;  : &emsp;{{i.1.fname}}<b></td>
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Date of Birth &emsp;: &emsp;{{i.1.dob}}</b></td>
+  <td style="text-align:left;font-size:18px;"><b>&emsp;Section &emsp;&emsp;&emsp; : &emsp;{{i.1.sect}}</b></td>
+  </tr>
+  <tr style="border:3px solid white;">
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Mother's Name&emsp;&nbsp;: &emsp;{{i.1.mname}}<b></td>
+  <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Roll No.&emsp;&emsp;&emsp;&nbsp; : &emsp;{{i.1.rolln}}</b></td>
+  <td style="text-align:left;font-size:18px;"><b>&emsp;Attendence &emsp;&nbsp; : &emsp;{{i.1.attd}}</b></td>
+  </tr>
+  </table>
+  <table style="height:auto;width:auto;margin-left:10px;margin-right:10px;">
+    <thead style="background-color:white;border:2px solid black;">
+      <tr style="border:2px solid black;">
+        <td colspan="6" >Scholastic Areas </td>
+        <td colspan="6" > TERM I </td>
+        <td colspan="6" > TERM II </td>
+        <td colspan="4" > TERM I + TERM II </td>
+      </tr>
+      <tr>
+        <td colspan="6" > Name </td>
+        <td colspan="1" >PT<br/>(10)</td>
+        <td colspan="1" >NB<br/>(5)</td>
+        <td colspan="1" >SE<br/>(5)</td>
+        <td colspan="1" >MT<br/>(60)</td>
+        <td colspan="1" >MO<br/>(80)</td>
+        <td colspan="1" >GRADE</td>
+        <td colspan="1" >PT<br/>(10)</td>
+        <td colspan="1" >NB<br/>(5)</td>
+        <td colspan="1" >SE<br/>(5)</td>
+        <td colspan="1" >ANN<br/>(60)</td>
+        <td colspan="1" >MO<br/>(80)</td>
+        <td colspan="1" >GRADE</td>
+        <td colspan="1" >TERM I <br/>(50%)</td>
+        <td colspan="1" >TERM II <br/>(50%)</td>
+        <td colspan="1" >TOTAL<br/>(80)</td>
+        <td colspan="1">GRADE</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="6" style=" text-align:left;"><b>English </b></td>
+        <td>{{i.2.eng.0}}</td>
+        <td>{{i.2.eng.1}}</td>
+        <td>{{i.2.eng.2}}</td>
+        <td>{{i.2.eng.3}}</td>
+        <td>{{i.2.eng.4}}</td>
+        <td>{{i.2.eng.5}}</td>
+        <td>{{i.2.eng.6}}</td>
+        <td>{{i.2.eng.7}}</td>
+        <td>{{i.2.eng.8}}</td>
+        <td>{{i.2.eng.9}}</td>
+        <td>{{i.2.eng.10}}</td>
+        <td>{{i.2.eng.11}}</td>
+        <td>{{i.2.eng.12}}</td>
+        <td>{{i.2.eng.13}}</td>
+        <td>{{i.2.eng.14}}</td>
+        <td>{{i.2.eng.15}}</td>
+      </tr>
+	  </tbody>
+	  <tbody>
+	   <tr>
+        <td colspan="6" style=" text-align:left;"><b>Hindi</b> </td>
+        <td>{{i.2.hin.0}}</td>
+        <td>{{i.2.hin.1}}</td>
+        <td>{{i.2.hin.2}}</td>
+        <td>{{i.2.hin.3}}</td>
+        <td>{{i.2.hin.4}}</td>
+        <td>{{i.2.hin.5}}</td>
+        <td>{{i.2.hin.6}}</td>
+        <td>{{i.2.hin.7}}</td>
+        <td>{{i.2.hin.8}}</td>
+        <td>{{i.2.hin.9}}</td>
+        <td>{{i.2.hin.10}}</td>
+        <td>{{i.2.hin.11}}</td>
+        <td>{{i.2.hin.12}}</td>
+        <td>{{i.2.hin.13}}</td>
+        <td>{{i.2.hin.14}}</td>
+        <td>{{i.2.hin.15}}</td>
+      </tr>
+      </tbody>
+      
+      <tbody>
+      <tr>
+        <td colspan="6" style=" text-align:left;"><b>Mathematics</b> </td>
+        <td>{{i.2.math.0}}</td>
+        <td>{{i.2.math.1}}</td>
+        <td>{{i.2.math.2}}</td>
+        <td>{{i.2.math.3}}</td>
+        <td>{{i.2.math.4}}</td>
+        <td>{{i.2.math.5}}</td>
+        <td>{{i.2.math.6}}</td>
+        <td>{{i.2.math.7}}</td>
+        <td>{{i.2.math.8}}</td>
+        <td>{{i.2.math.9}}</td>
+        <td>{{i.2.math.10}}</td>
+        <td>{{i.2.math.11}}</td>
+        <td>{{i.2.math.12}}</td>
+        <td>{{i.2.math.13}}</td>
+        <td>{{i.2.math.14}}</td>
+        <td>{{i.2.math.15}}</td>
+      </tr>
+	  </tbody>
+	  <tbody>
+            <tr>
+              <td colspan="6" style=" text-align:left;"><b>E.V.S</b> </td>
+              <td>{{i.2.evs.0}}</td>
+              <td>{{i.2.evs.1}}</td>
+              <td>{{i.2.evs.2}}</td>
+              <td>{{i.2.evs.3}}</td>
+              <td>{{i.2.evs.4}}</td>
+              <td>{{i.2.evs.5}}</td>
+              <td>{{i.2.evs.6}}</td>
+              <td>{{i.2.evs.7}}</td>
+              <td>{{i.2.evs.8}}</td>
+              <td>{{i.2.evs.9}}</td>
+              <td>{{i.2.evs.10}}</td>
+              <td>{{i.2.evs.11}}</td>
+              <td>{{i.2.evs.12}}</td>
+              <td>{{i.2.evs.13}}</td>
+              <td>{{i.2.evs.14}}</td>
+              <td>{{i.2.evs.15}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="height:auto;width:auto;margin-left:10px;margin-right:10px;">
+    <thead style="background-color:white;">
+      <tr>
+        <td colspan="10">Scholastic Areas </td>
+        <td colspan="10"> Grade </td>
+      </tr>
+      <tr>
+        <td colspan="10"></td>
+        <td colspan="5">Term I</td>
+        <td colspan="5">Term II</td>
+      </tr>
+      </thead>
+      <tbody>
+          <td colspan="10"> G.K. </td>
+          <td colspan="5"> {{i.2.gk.0}} </td>
+          <td colspan="5"> {{i.2.gk.1}} </td>
+      </tbody>
+	  <tbody>
+          <td colspan="10"> DRAWING </td>
+          <td colspan="5"> {{i.2.dr.0}} </td>
+          <td colspan="5"> {{i.2.dr.1}} </td>
+      </tbody>
+	  <tbody>
+          <td colspan="10"> COMPUTER</td>
+          <td colspan="5"> {{i.2.com.0}} </td>
+          <td colspan="5"> {{i.2.com.1}} </td>
+      </tbody>
+  </table>
+  <table style="height:auto;width:auto;margin-left:10px;margin-right:10px;">
+    <thead style="background-color:white;">
+      <tr>
+        <td colspan="10">Co-Scholastic Areas: [on a 3-point (A-C) grading scale] </td>
+        <td colspan="10"> Grade </td>
+      </tr>
+      <tr>
+        <td colspan="10"></td>
+        <td colspan="5">Term I</td>
+        <td colspan="5">Term II</td>
+      </tr>
+      </thead>
+      <tbody>
+          <td colspan="10"> Work Education</td>
+          <td colspan="5"> {{i.2.we.0}} </td>
+          <td colspan="5"> {{i.2.we.1}} </td>
+      </tbody>
+	  <tbody>
+          <td colspan="10"> Art Education </td>
+          <td colspan="5"> {{i.2.ae.0}} </td>
+          <td colspan="5"> {{i.2.ae.1}} </td>
+      </tbody>
+	  <tbody>
+          <td colspan="10"> Health and Physical Education </td>
+          <td colspan="5"> {{i.2.hap.0}} </td>
+          <td colspan="5"> {{i.2.hap.1}} </td>
+      </tbody>
+  </table>
+  <table style="height:auto;width:auto;margin-left:10px;margin-right:10px;">
+      <thead style="background-color:white;">
+      <tr>
+        <td colspan="10">Discipline: [on a 3-point (A-C) grading scale]</td>
+        <td colspan="10"> Grade </td>
+      </tr>
+      <tr>
+        <td colspan="10"></td>
+        <td colspan="5">Term I</td>
+        <td colspan="5">Term II</td>
+      </tr>
+      </thead>
+      <tbody>
+          <td colspan="10"> Discipline </td>
+          <td colspan="5"> {{i.2.dis.0}} </td>
+          <td colspan="5"> {{i.2.dis.1}} </td>
+      </tbody>
+
+  </table>
+  <div style="float: left;border:2px solid black;width:97%;height:15%;text-align:left;margin-left:20px;margin-bottom:20px;"><b> Participated in:</b>
+  <p>{{i.2.partic}}</p>
+  </div>
+  <br>
+  <div style="float: left;border:2px solid black;width:97%;height:15%;text-align:left;margin-left:20px;margin-bottom:20px;"><b> Result:</b><p>{{i.2.rem}}</p></div>
+  <table >
+      <tr style="border:3px solid white;">
+        <td colspan="6" style="text-align:left;border-right:3px solid white;"><b>Date :</b></td>
+      </tr>
+      <tr style="border:3px solid white;">
+        <td colspan="4" style="text-align: left;border-right:3px solid white;"><b>Class Teacher's Sig.</b></td>
+        <td colspan="4" style="text-align: left;border-right:3px solid white;"><b>Parent's Sig.</b> </td>
+        <td colspan="4" style="text-align: left;"><b>Principal </b></td>
+      </tr>
+  </table>
+</div>
+<button id="{{i.0}}" class="indi">Download</button>
+</div>
+{% endfor %}
+
+<script src='{% static 'html2canvas.js' %}'></script>
+{% for i in lst %}
+<script> 
+$('#cmd').click(function () {   
+html2canvas(document.querySelector("#x{{i.0}}")).then(canvas => {
+    canvas.id="mycanvas";
+    var imgData = canvas.toDataURL("image/jpeg", 1.0);
+    var pdf = new jsPDF('portrait');
+    pdf.addImage(imgData, 'JPEG', 0, 0,210,297);
+    pdf.save("Report_{{i.0}}.pdf");
+  });
+});
+</script>
+{% endfor %}
+<script> 
+        $('.indi').click(function () {   
+            var thisid=$(this).attr('id');
+            
+        html2canvas(document.querySelector("#x"+thisid)).then(canvas => {
+            canvas.id="mycanvas";
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+            var pdf = new jsPDF('portrait');
+            pdf.addImage(imgData, 'JPEG', 0, 0,210,297);
+            pdf.save("Report_"+thisid+".pdf");
+          });
+        });
+</script>
+        
+</body>
+</html>

@@ -1,0 +1,43 @@
+html {
+  font-family:arial;
+  font-size: 20px;
+  text-align: center;
+}
+body {
+;
+}
+
+
+
+p.solid {
+  border-style: solid;
+}
+
+td {
+  padding: 6px;
+  text-align:center;
+  column-width: 500px;
+  height: 20px;
+}
+
+thead{
+  font-weight:bold;
+  text-align:center;
+  background: #D1D0CE;
+  color:black;
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.footer {
+  text-align:right;
+  font-weight:bold;
+}
+
+tbody >tr:nth-child(odd) {
+  background: white;
+}
+table,tr,td{border:2px solid black;}

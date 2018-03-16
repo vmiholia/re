@@ -1,0 +1,451 @@
+<html>
+{% load staticfiles %}
+<head>
+<link href='{% static 'styles.css' %}' rel="stylesheet">
+<title> Report Card </title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+</head>
+<body>
+<button id="cmd">Generate PDF</button>
+{% for i in lst %}
+<div id="y">
+<div id="x{{i.0}}" style="border: 5px solid black;">
+<div id="part1">
+<p class="double"><img src='{% static '1.jpg' %}' alt='logo' style="float: left; width: 105px;height: 105px;"> <b>LITTLE FLOWERS PUBLIC SCHOOL</b><br/><br/>
+<b>(An English medium School Recognised by Delhi Admn. Affiliated to C.B.S.E) <br/>
+  Vijay Park (Near C-11), Yamuna Vihar, Delhi-110053, Ph. : 22919858, 22919242 <br/>Website:http://lfpsyv.in,  Email : yvlfps@gmail.com</b></p>          
+<p style="border:2px solid black;border-right:none;border-left:none;background-color:gray;color:white;"><b>SCHOOL BASED EVALUATION 2017-2018</b></p>
+<table style="border:3px solid white;text-align:left;font-size:18px;">
+        <tr>
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Student's Name&emsp;: &emsp;{{i.1.name}}<b></td>
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Adm No. &emsp;&emsp;&emsp;: &emsp;{{i.1.admno}}</b></td>
+        <td style="text-align:left;font-size:18px;"><b>&emsp;Class &emsp;&emsp;&emsp;&emsp; : &emsp;{{i.1.cld}}</b></td>
+        </tr>
+        <tr style="border:3px solid white;">
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Father's Name&emsp;&nbsp;  : &emsp;{{i.1.fname}}<b></td>
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Date of Birth &emsp;: &emsp;{{i.1.dob}}</b></td>
+        <td style="text-align:left;font-size:18px;"><b>&emsp;Section &emsp;&emsp;&emsp; : &emsp;{{i.1.sect}}</b></td>
+        </tr>
+        <tr style="border:3px solid white;">
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Mother's Name&emsp;&nbsp;: &emsp;{{i.1.mname}}<b></td>
+        <td style="text-align:left;font-size:18px;border-right:2px solid white;width:40%;"><b>Roll No.&emsp;&emsp;&emsp;&nbsp; : &emsp;{{i.1.rolln}}</b></td>
+        <td style="text-align:left;font-size:18px;"><b>&emsp;Attendence &emsp;&nbsp; : &emsp;{{i.1.attd}}</b></td>
+        </tr>
+</table>
+  <table style="border:2px solid black;">
+    <thead style="background-color:white;border:2px solid black;">
+      <tr style="border:2px solid black;background-color:red;color:white;">
+        <td ></td>
+        <td colspan="2"> EVALUTAION I </td>
+        <td  colspan="3"> EVALUATION II </td>
+      </tr>
+	   <tr style="border:2px solid black;background-color:red;color:white;" >
+        <td> ENGLISH </td>
+        <td >PT I</td>
+        <td >PT II</td>
+		<td >PT III</td>
+        <td >PT IV</td>
+		<td >ANNUAL</td>
+      </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;color:red;">READING SKILL</td>
+	  </tr>
+	  <tr>
+        <td > PRONUNCIATION AND FLUENCY</td>
+        <td >{{i.2.eng.0.0}}</td>
+        <td >{{i.2.eng.0.1}}</td>
+		<td >{{i.2.eng.0.2}}</td>
+        <td >{{i.2.eng.0.3}}</td>
+		<td >{{i.2.eng.0.4}}</td>
+      </tr>
+	  <tr>
+        <td>COMPREHENSION </td>
+        <td >{{i.2.eng.1.0}}</td>
+        <td >{{i.2.eng.1.1}}</td>
+		<td >{{i.2.eng.1.2}}</td>
+        <td >{{i.2.eng.1.3}}</td>
+		<td >{{i.2.eng.1.4}}</td>
+      </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;color:red;">WRITING SKILL</td>
+	  </tr>
+	  <tr>
+        <td>LITERATURE </td>
+        <td >{{i.2.eng.2.0}}</td>
+        <td >{{i.2.eng.2.1}}</td>
+		<td >{{i.2.eng.2.2}}</td>
+        <td >{{i.2.eng.2.3}}</td>
+		<td >{{i.2.eng.2.4}}</td>
+      </tr>
+	  <tr>
+        <td>GRAMMAR</td>
+        <td >{{i.2.eng.3.0}}</td>
+        <td >{{i.2.eng.3.1}}</td>
+		<td >{{i.2.eng.3.2}}</td>
+        <td >{{i.2.eng.3.3}}</td>
+		<td >{{i.2.eng.3.4}}</td>
+      </tr>
+	  <tr>
+        <td>DICTIONARY </td>
+        <td >{{i.2.eng.4.0}}</td>
+        <td >{{i.2.eng.4.1}}</td>
+		<td >{{i.2.eng.4.2}}</td>
+        <td >{{i.2.eng.4.3}}</td>
+		<td >{{i.2.eng.4.4}}</td>
+      </tr>
+	  <tr>
+        <td> HAND WRITTING AND ASSINGNMENTS </td>
+        <td >{{i.2.eng.5.0}}</td>
+        <td >{{i.2.eng.5.1}}</td>
+		<td >{{i.2.eng.5.2}}</td>
+        <td >{{i.2.eng.5.3}}</td>
+		<td >{{i.2.eng.5.4}}</td>
+      </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;color:red;">SPEAKING SKILL</td>
+	  </tr>
+	  <tr>
+        <td> RECITATION/STORY TELLING </td>
+        <td >{{i.2.eng.6.0}}</td>
+        <td >{{i.2.eng.6.1}}</td>
+		<td >{{i.2.eng.6.2}}</td>
+        <td >{{i.2.eng.6.3}}</td>
+		<td >{{i.2.eng.6.4}}</td>
+      </tr>
+	  <tr>
+        <td> CONVERSATION</td>
+        <td >{{i.2.eng.7.0}}</td>
+        <td >{{i.2.eng.7.1}}</td>
+		<td >{{i.2.eng.7.2}}</td>
+        <td >{{i.2.eng.7.3}}</td>
+		<td >{{i.2.eng.7.4}}</td>
+      </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;background-color:green;color:white;">HINDI</td>
+	  </tr>
+      <tr>
+            <td colspan="10" style="text-align:left;color:red;">READING SKILL</td>
+            </tr>
+            <tr>
+              <td > PRONUNCIATION AND FLUENCY</td>
+              <td >{{i.2.hin.0.0}}</td>
+              <td >{{i.2.hin.0.1}}</td>
+              <td >{{i.2.hin.0.2}}</td>
+              <td >{{i.2.hin.0.3}}</td>
+              <td >{{i.2.hin.0.4}}</td>
+            </tr>
+            <tr>
+              <td>COMPREHENSION </td>
+              <td >{{i.2.hin.1.0}}</td>
+              <td >{{i.2.hin.1.1}}</td>
+              <td >{{i.2.hin.1.2}}</td>
+              <td >{{i.2.hin.1.3}}</td>
+              <td >{{i.2.hin.1.4}}</td>
+            </tr>
+            <tr>
+            <td colspan="10" style="text-align:left;color:red;">WRITING SKILL</td>
+            </tr>
+            <tr>
+              <td>LITERATURE </td>
+              <td >{{i.2.hin.2.0}}</td>
+              <td >{{i.2.hin.2.1}}</td>
+              <td >{{i.2.hin.2.2}}</td>
+              <td >{{i.2.hin.2.3}}</td>
+              <td >{{i.2.hin.2.4}}</td>
+            </tr>
+            <tr>
+              <td>GRAMMAR</td>
+              <td >{{i.2.hin.3.0}}</td>
+              <td >{{i.2.hin.3.1}}</td>
+              <td >{{i.2.hin.3.2}}</td>
+              <td >{{i.2.hin.3.3}}</td>
+              <td >{{i.2.hin.3.4}}</td>
+            </tr>
+            <tr>
+              <td>DICTIONARY </td>
+              <td >{{i.2.hin.4.0}}</td>
+              <td >{{i.2.hin.4.1}}</td>
+              <td >{{i.2.hin.4.2}}</td>
+              <td >{{i.2.hin.4.3}}</td>
+              <td >{{i.2.hin.4.4}}</td>
+            </tr>
+            <tr>
+              <td> HAND WRITTING AND ASSINGNMENTS </td>
+              <td >{{i.2.hin.5.0}}</td>
+              <td >{{i.2.hin.5.1}}</td>
+              <td >{{i.2.hin.5.2}}</td>
+              <td >{{i.2.hin.5.3}}</td>
+              <td >{{i.2.hin.5.4}}</td>
+            </tr>
+            <tr>
+            <td colspan="10" style="text-align:left;color:red;">SPEAKING SKILL</td>
+            </tr>
+            <tr>
+              <td> RECITATION/STORY TELLING </td>
+              <td >{{i.2.hin.6.0}}</td>
+              <td >{{i.2.hin.6.1}}</td>
+              <td >{{i.2.hin.6.2}}</td>
+              <td >{{i.2.hin.6.3}}</td>
+              <td >{{i.2.hin.6.4}}</td>
+            </tr>
+            <tr>
+              <td> CONVERSATION</td>
+              <td >{{i.2.hin.7.0}}</td>
+              <td >{{i.2.hin.7.1}}</td>
+              <td >{{i.2.hin.7.2}}</td>
+              <td >{{i.2.hin.7.3}}</td>
+              <td >{{i.2.hin.7.4}}</td>
+            </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;background-color:yellow;color:black;">MATHS</td>
+	  </tr>
+	  <tr>
+	  <td colspan="10" style="text-align:left;color:red;">ASPECTS</td>
+	  </tr>
+	  <tr>
+        <td> CONCEPT </td>
+        <td >{{i.2.mat.0.0}}</td>
+        <td >{{i.2.mat.0.1}}</td>
+		<td >{{i.2.mat.0.2}}</td>
+        <td >{{i.2.mat.0.3}}</td>
+		<td >{{i.2.mat.0.4}}</td>
+      </tr>
+	  <tr>
+        <td>ACTIVITY</td>
+        <td >{{i.2.mat.1.0}}</td>
+        <td >{{i.2.mat.1.1}}</td>
+		<td >{{i.2.mat.1.2}}</td>
+        <td >{{i.2.mat.1.3}}</td>
+		<td >{{i.2.mat.1.4}}</td>
+      </tr>
+	  <tr>
+        <td> TABLE/MENTAL ABILITY </td>
+        <td >{{i.2.mat.2.0}}</td>
+        <td >{{i.2.mat.2.1}}</td>
+		<td >{{i.2.mat.2.2}}</td>
+        <td >{{i.2.mat.2.3}}</td>
+		<td >{{i.2.mat.2.4}}</td>
+      </tr>
+	  <tr>
+        <td> CLASS AND HOME ASSINGNMENTS</td>
+        <td >{{i.2.mat.3.0}}</td>
+        <td >{{i.2.mat.3.1}}</td>
+		<td >{{i.2.mat.3.2}}</td>
+        <td >{{i.2.mat.3.3}}</td>
+		<td >{{i.2.mat.3.4}}</td>
+      </tr>
+    </thead>
+    </table>
+    </div>
+<div id="part2">
+        <table style="border:2px solid black;">
+                <thead style="background-color:white;border:2px solid black;">
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td > NAME : AASTHA</td>
+                    <td colspan="2"> CLASS I </td>
+                    <td  colspan="3"> ROLL NO. 1</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:red;color:white;">
+                    <td ></td>
+                    <td colspan="2"> EVALUTAION I </td>
+                    <td  colspan="3"> EVALUATION II </td>
+                  </tr>
+                   <tr style="border:2px solid black;background-color:red;color:white;" >
+                    <td> EVS/OTHER SUBJECTS </td>
+                    <td >PT I</td>
+                    <td >PT II</td>
+                    <td >PT III</td>
+                    <td >PT IV</td>
+                    <td >ANNUAL</td>
+                  </tr>
+                   <tr>
+                  <td colspan="10" style="text-align:left;color:red;">ASPECTS</td>
+                  </tr>
+                  <tr>
+                    <td >E.V.S</td>
+                    <td >{{i.2.evs.0}}</td>
+                    <td >{{i.2.evs.1}}</td>
+                    <td >{{i.2.evs.2}}</td>
+                    <td >{{i.2.evs.3}}</td>
+                    <td >{{i.2.evs.4}}</td>
+                  </tr>
+                  <tr>
+                    <td>ACTIVITY/PROJECTS </td>
+                    <td >{{i.2.act.0}}</td>
+                    <td >{{i.2.act.1}}</td>
+                    <td >{{i.2.act.2}}</td>
+                    <td >{{i.2.act.3}}</td>
+                    <td >{{i.2.act.4}}</td>
+                  </tr>
+                  <tr>
+                    <td > G.K.</td>
+                    <td >{{i.2.gk.0}}</td>
+                    <td >{{i.2.gk.1}}</td>
+                    <td >{{i.2.gk.2}}</td>
+                    <td >{{i.2.gk.3}}</td>
+                    <td >{{i.2.gk.4}}</td>
+                  </tr>
+                  <tr>
+                    <td>COMPUTER </td>
+                    <td >{{i.2.com.0}}</td>
+                    <td >{{i.2.com.1}}</td>
+                    <td >{{i.2.com.2}}</td>
+                    <td >{{i.2.com.3}}</td>
+                    <td >{{i.2.com.4}}</td>
+                  </tr>
+                  <tr>
+                    <td > DRAWING</td>
+                    <td >{{i.2.dra.0}}</td>
+                    <td >{{i.2.dra.1}}</td>
+                    <td >{{i.2.dra.2}}</td>
+                    <td >{{i.2.dra.3}}</td>
+                    <td >{{i.2.dra.4}}</td>
+                  </tr>
+                  <tr>
+                    <td>VALUE EDUCATION </td>
+                    <td >{{i.2.ved.0}}</td>
+                    <td >{{i.2.ved.1}}</td>
+                    <td >{{i.2.ved.2}}</td>
+                    <td >{{i.2.ved.3}}</td>
+                    <td >{{i.2.ved.4}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:YELLOW;color:black;">
+                    <td >CO-CURRICULAR ACTIVITY</td>
+                    <td colspan="2"> EVALUATION I </td>
+                    <td  colspan="3"> EVALUATION II</td>
+                    
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td>MUSIC/DANCE</td>
+                    <td colspan="2"> {{i.2.mus.0}} </td>
+                    <td  colspan="3">{{i.2.mus.1}}</td>
+                    
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >ART/CRAFT</td>
+                    <td colspan="2"> {{i.2.art.0}} </td>
+                    <td  colspan="3">{{i.2.art.1}}</td>
+                    
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >SPORTS</td>
+                    <td colspan="2"> {{i.2.spo.0}} </td>
+                    <td  colspan="3">{{i.2.spo.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:purple;color:white;">
+                    <td >PERSONALITY DEVELOPMENT</td>
+                    <td colspan="2"> EVALUATION I </td>
+                    <td  colspan="3"> EVALUATION II</td>
+                  </tr>
+                   <tr>
+                  <td colspan="10" style="text-align:left;color:red;">PERSONAL AND SOCIAL TRAITS</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >COURTEOUSNESS</td>
+                    <td colspan="2"> {{i.2.court.0}} </td>
+                    <td  colspan="3">{{i.2.court.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >CONFIDENCE</td>
+                    <td colspan="2"> {{i.2.conf.0}} </td>
+                    <td  colspan="3">{{i.2.conf.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >CARE OF BELONGINGS</td>
+                    <td colspan="2"> {{i.2.care.0}} </td>
+                    <td  colspan="3">{{i.2.care.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >NEATNESS</td>
+                    <td colspan="2"> {{i.2.neat.0}} </td>
+                    <td  colspan="3">{{i.2.neat.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >REGULARITY</td>
+                    <td colspan="2"> {{i.2.regu.0}} </td>
+                    <td  colspan="3">{{i.2.regu.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >SHARING & CARING</td>
+                    <td colspan="2"> {{i.2.shar.0}} </td>
+                    <td  colspan="3">{{i.2.shar.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >RESPECTS FOR OTHER PROPERTY</td>
+                    <td colspan="2"> {{i.2.res.0}} </td>
+                    <td  colspan="3">{{i.2.res.1}}</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td >DISCIPLINE</td>
+                    <td colspan="2"> {{i.2.disip.0}} </td>
+                    <td  colspan="3">{{i.2.disip.1}}</td>
+                  </tr>
+                  <tr>
+                  <td colspan="10" style="text-align:left;color:red;background-color:red;color:white;">SPECIFIC PARTICIPATION</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td colspan="3"> EVALUATION I </td>
+                    <td  colspan="3"> EVALUATION II</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td colspan="3">{{i.2.part.0}}</td>
+                    <td  colspan="3">{{i.2.part.1}}</td>
+                  </tr>
+                  <td colspan="10" style="text-align:left;color:red;background-color:red;color:white;">GENEREL REMARKS</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td colspan="3"> EVALUATION I </td>
+                    <td  colspan="3"> EVALUATION II</td>
+                  </tr>
+                  <tr style="border:2px solid black;background-color:white;color:black;">
+                    <td colspan="3">{{i.2.grem.0}}</td>
+                    <td  colspan="3">{{i.2.grem.1}}</td>
+                  </tr>
+                  </thead>
+                 </table> 
+                 <table>
+                 <tr style="border:3px solid white;">
+                    <td colspan="6" style="text-align:left;border-right:3px solid white;"><b>Date :</b></td>
+                  </tr>
+                 <tr style="border:3px solid white;">
+                    <td colspan="8" style="text-align: left;border-right:3px solid white;"><b>Class Teacher's Sig.</b></td>
+                    <td colspan="8" style="text-align: right;"><b>Principal </b></td>
+                  </tr>
+                 </table>
+</div>  
+
+</div>
+<button id="{{i.0}}" class="indi">Download</button>
+</div>
+{% endfor %}
+
+<script src='{% static 'html2canvas.js' %}'></script>
+{% for i in lst %}
+<script> 
+$('#cmd').click(function () {   
+html2canvas(document.querySelector("#x{{i.0}}")).then(canvas => {
+    canvas.id="mycanvas";
+    var imgData = canvas.toDataURL("image/jpeg", 1.0);
+    var pdf = new jsPDF('portrait');
+    pdf.addImage(imgData, 'JPEG', 0, 0,210,297);
+    pdf.save("Report_{{i.0}}.pdf");
+  });
+});
+</script>
+{% endfor %}
+<script> 
+        $('.indi').click(function () {   
+            var thisid=$(this).attr('id');
+            
+        html2canvas(document.querySelector("#x"+thisid)).then(canvas => {
+            canvas.id="mycanvas";
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+            var pdf = new jsPDF('portrait');
+            pdf.addImage(imgData, 'JPEG', 0, 0,210,297);
+            pdf.save("Report_"+thisid+".pdf");
+          });
+        });
+</script>
+</body>
+ </html> 
